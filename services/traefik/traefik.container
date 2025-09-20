@@ -1,0 +1,27 @@
+# traefik.container
+[Unit]
+Description=Traefik
+
+[Container]
+ContainerName=traefik
+Exec='--entrypoints.web.address=:80'
+Exec='--entrypoints.web.http.redirections.entryPoint.to=websecure'
+Exec='--entrypoints.web.http.redirections.entryPoint.scheme=https'
+Exec='--entrypoints.websecure.address=:443'
+Exec='--providers.docker=true'
+Exec='--certificatesresolvers.le.acme.email=aldrian.thom+letsencrypt@proton.me'
+Exec='--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json'
+Exec='--certificatesresolvers.le.acme.dnschallenge=true'
+Exec='--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare'
+Image=docker.io/library/traefik:latest
+Network=web
+PublishPort=80:80
+PublishPort=443:443
+Secret=cloudflare-email,type=env,target=CF_API_EMAIL
+Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
+SecurityLabelType=container_runtime_t
+Volume=/run/user/1000/podman/podman.sock:/var/run/docker.sock:z
+Volume=certs.volume:/letsencrypt:z
+
+[Service]
+Restart=always

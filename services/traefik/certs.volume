@@ -1,0 +1,3 @@
+[Volume]
+Device=10.10.10.50:/mnt/nvmepool/apps/certs
+Type=nfs
