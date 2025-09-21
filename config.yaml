@@ -1,5 +1,5 @@
 configReload:
-  configURL: https://raw.githubusercontent.com/Weissnix4711/cube-services/main/config.yaml
+  configURL: https://raw.githubusercontent.com/Weissnix4711/cube-services/master/config.yaml
   interval: 100000
 targetConfigs:
   - url: https://github.com/Weissnix4711/cube-services
