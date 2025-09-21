@@ -21,7 +21,7 @@ Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
 SecurityLabelType=container_runtime_t
 Volume=/run/user/1000/podman/podman.sock:/var/run/docker.sock:z
-Volume=certs.volume:/letsencrypt:z
+Volume=/mnt/certs:/letsencrypt:z
 
 [Service]
 Restart=always
