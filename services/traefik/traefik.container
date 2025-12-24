@@ -1,27 +1,34 @@
-# traefik.container
 [Unit]
-Description=Traefik
+After=http.socket https.socket
+Requires=http.socket https.socket
+Description=Reverse proxy
 
 [Container]
-ContainerName=traefik
-Exec='--entrypoints.web.address=:80'
+Image=docker.io/library/traefik:latest
+Network=web.network
+# sd_notify supported
+Notify=true
+# Allow podman sock access
+SecurityLabelType=container_runtime_t
+Volume=%t/podman/podman.sock:/var/run/docker.sock
+Volume=traefik-certs.volume:/letsencrypt:z
+Exec='--entrypoints.web'
 Exec='--entrypoints.web.http.redirections.entryPoint.to=websecure'
 Exec='--entrypoints.web.http.redirections.entryPoint.scheme=https'
-Exec='--entrypoints.websecure.address=:443'
+Exec='--entrypoints.websecure'
 Exec='--providers.docker=true'
+Exec='--providers.docker.exposedbydefault=false'
+# Let's encrypt TODO email in secrets
 Exec='--certificatesresolvers.le.acme.email=aldrian.thom+letsencrypt@proton.me'
 Exec='--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json'
 Exec='--certificatesresolvers.le.acme.dnschallenge=true'
 Exec='--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare'
-Image=docker.io/library/traefik:latest
-Network=web
-PublishPort=80:80
-PublishPort=443:443
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
-SecurityLabelType=container_runtime_t
-Volume=/run/user/1000/podman/podman.sock:/var/run/docker.sock:z
-Volume=/mnt/certs:/letsencrypt:z
 
 [Service]
-Restart=always
+Restart=on-failure
+Sockets=http.socket https.socket
+
+[Install]
+WantedBy=default.target
