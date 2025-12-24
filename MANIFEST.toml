@@ -1,0 +1,6 @@
+[Hosts.localhost]
+Roles = ["base"]
+
+[Roles]
+[Roles.base]
+Components = ["traefik"]

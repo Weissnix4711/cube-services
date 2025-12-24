@@ -1,0 +1,4 @@
+[Defaults]
+
+[[Services]]
+Service = "traefik.service"

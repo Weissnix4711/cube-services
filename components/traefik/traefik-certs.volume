@@ -1,0 +1,5 @@
+[Volume]
+# TODO is this correct?
+Device=10.10.10.50:/mnt/nvmepool/apps/certs
+Driver=local
+Type=nfs
