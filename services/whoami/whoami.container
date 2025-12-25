@@ -1,0 +1,11 @@
+[Container]
+Image=docker.io/traefik/whoami
+Network=web.network
+Label="traefik.enable=true"
+Label="traefik.http.routers.whoami.rule=Host(`whoami.thomasaldrian.net`)"
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -12,17 +12,17 @@ Notify=true
 SecurityLabelType=container_runtime_t
 Volume=%t/podman/podman.sock:/var/run/docker.sock
 Volume=/var/mnt/apps/certs:/letsencrypt:z
-Exec='--entrypoints.web'
-Exec='--entrypoints.web.http.redirections.entryPoint.to=websecure'
-Exec='--entrypoints.web.http.redirections.entryPoint.scheme=https'
-Exec='--entrypoints.websecure'
-Exec='--providers.docker=true'
-Exec='--providers.docker.exposedbydefault=false'
+Exec='--entrypoints.web' \
+    '--entrypoints.web.http.redirections.entryPoint.to=websecure' \
+    '--entrypoints.web.http.redirections.entryPoint.scheme=https' \
+    '--entrypoints.websecure' \
+    '--providers.docker=true' \
+    '--providers.docker.exposedbydefault=false' \
 # Let's encrypt TODO email in secrets
-Exec='--certificatesresolvers.le.acme.email=aldrian.thom+letsencrypt@proton.me'
-Exec='--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json'
-Exec='--certificatesresolvers.le.acme.dnschallenge=true'
-Exec='--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare'
+    '--certificatesresolvers.le.acme.email=aldrian.thom+letsencrypt@proton.me' \
+    '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json' \
+    '--certificatesresolvers.le.acme.dnschallenge=true' \
+    '--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare'
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
 
