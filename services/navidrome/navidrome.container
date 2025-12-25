@@ -1,0 +1,18 @@
+[Unit]
+Description=Music Server
+
+[Container]
+Image=deluan/navidrome:latest
+Volume=/var/mnt/apps/data/navidrome:/data
+Volume=/var/mnt/media/music:/music:ro
+Environment=ND_LOGLEVEL=info
+# Reverse proxy
+Network=web.network
+Label="traefik.enable=true"
+Label="traefik.http.routers.navidrome.rule=Host(`music.thomasaldrian.net`)"
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
