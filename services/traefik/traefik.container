@@ -12,13 +12,17 @@ Notify=true
 SecurityLabelType=container_runtime_t
 Volume=%t/podman/podman.sock:/var/run/docker.sock
 Volume=/var/mnt/apps/certs:/letsencrypt:z
+# TODO email in secrets
+# redirections to :443 not websecure see https://github.com/traefik/traefik/issues/12469
 Exec='--entrypoints.web' \
-    '--entrypoints.web.http.redirections.entryPoint.to=websecure' \
+    '--entrypoints.web.http.redirections.entryPoint.to=:443' \
     '--entrypoints.web.http.redirections.entryPoint.scheme=https' \
     '--entrypoints.websecure' \
+    '--entrypoints.websecure.asDefault=true' \
+    '--entrypoints.websecure.http.tls=true' \
+    '--log.level=INFO' \
     '--providers.docker=true' \
     '--providers.docker.exposedbydefault=false' \
-# Let's encrypt TODO email in secrets
     '--certificatesresolvers.le.acme.email=aldrian.thom+letsencrypt@proton.me' \
     '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json' \
     '--certificatesresolvers.le.acme.dnschallenge=true' \
