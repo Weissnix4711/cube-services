@@ -20,6 +20,7 @@ Exec='--entrypoints.web' \
     '--entrypoints.websecure' \
     '--entrypoints.websecure.asDefault=true' \
     '--entrypoints.websecure.http.tls=true' \
+    '--entrypoints.websecure.http.tls.certresolver=le' \
     '--log.level=INFO' \
     '--providers.docker=true' \
     '--providers.docker.exposedbydefault=false' \
