@@ -3,6 +3,7 @@ Description=Music Server
 
 [Container]
 Image=deluan/navidrome:latest
+UserNS=keep-id
 Volume=/var/mnt/apps/data/navidrome:/data
 Volume=/var/mnt/media/music:/music:ro
 Environment=ND_LOGLEVEL=info
