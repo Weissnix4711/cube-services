@@ -11,7 +11,7 @@ Notify=true
 # Allow podman sock access
 SecurityLabelType=container_runtime_t
 Volume=%t/podman/podman.sock:/var/run/docker.sock
-Volume=traefik-certs.volume:/letsencrypt:z
+Volume=/var/mnt/apps/certs:/letsencrypt:z
 Exec='--entrypoints.web'
 Exec='--entrypoints.web.http.redirections.entryPoint.to=websecure'
 Exec='--entrypoints.web.http.redirections.entryPoint.scheme=https'
