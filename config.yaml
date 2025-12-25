@@ -3,6 +3,6 @@ configReload:
   interval: 100000
 targetConfigs:
   - url: https://github.com/Weissnix4711/cube-services
-    targetPath: "services/traefik"
+    targetPath: "services"
     branch: "main"
     schedule: "1/10 * * * * *"
