@@ -1,11 +1,13 @@
 FROM docker.io/kanidm/server:latest
 
 # Config
-COPY server.toml /data/server.toml
+COPY --chmod=440 server.toml /server.toml
+ENV KANIDM_CONFIG=/server.toml
 
-# Generate self-signed certs
-RUN ["kanidmd", "cert-generate"]
+# certs
+COPY --chmod=440 certs/chain.pem /chain.pem
+COPY --chmod=440 certs/key.pem /key.pem
 
 # Test config 
 # This doesn't necessarily return a non-zero code on failure
-RUN ["kanidmd", "configtest"]
+# RUN ["kanidmd", "configtest"]

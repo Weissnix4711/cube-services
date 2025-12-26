@@ -1,0 +1,39 @@
+[ req_ca ]
+prompt             = no
+default_md         = sha256
+distinguished_name = dn_ca
+x509_extensions    = v3_ca
+
+[ req_server ]
+prompt             = no
+default_md         = sha256
+distinguished_name = dn_server
+x509_extensions    = v3_server
+
+[ dn_ca ]
+C  = UK
+O  = Thomas Aldrian
+CN = Generated CA
+OU = Placeholder DO NOT TRUST
+
+[ dn_server ]
+C  = UK
+O  = Thomas Aldrian
+CN = idm.thomasaldrian.net
+OU = Placeholder DO NOT TRUST
+
+[ v3_ca ]
+basicConstraints = critical,CA:TRUE,pathlen:0
+keyUsage         = critical,keyCertSign,cRLSign
+subjectKeyIdentifier = hash
+
+[ v3_server ]
+basicConstraints    = CA:FALSE
+keyUsage            = critical,digitalSignature,keyEncipherment
+extendedKeyUsage    = serverAuth
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+subjectAltName      = @alt_names
+
+[ alt_names ]
+DNS.1 = idm.thomasaldrian.net
