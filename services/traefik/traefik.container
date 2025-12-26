@@ -33,7 +33,7 @@ Exec= \
     '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json' \
     '--certificatesresolvers.le.acme.dnschallenge=true' \
     '--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare' \
-    '--serverstransport.tls.insecureskipverify' \
+    '--serverstransport.insecureskipverify' \
     '--tcpserverstransport.tls.insecureskipverify'
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
