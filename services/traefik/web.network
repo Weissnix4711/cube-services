@@ -1,6 +1,11 @@
 [Network]
+# NetworkDeleteOnStop=true
 # Trusted 10.99.0.0/28 (10.99.0.1-14)
 # Clients 10.99.0.64/26 (10.99.0.65-126)
 Subnet=10.99.0.0/24
 IPRange=10.99.0.64/26
 Internal=true
+
+# NetworkDeleteOnStop unavailable < v5.5.0
+[Service]
+ExecStopPost=/usr/bin/podman network rm systemd-web
