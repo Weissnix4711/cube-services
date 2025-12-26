@@ -1,0 +1,11 @@
+FROM docker.io/kanidm/server:latest
+
+# Config
+COPY server.toml /data/server.toml
+
+# Generate self-signed certs
+RUN ["kanidmd", "cert-generate"]
+
+# Test config 
+# This doesn't necessarily return a non-zero code on failure
+RUN ["kanidmd", "configtest"]

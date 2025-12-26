@@ -1,0 +1,7 @@
+[Socket]
+ListenStream=636
+FileDescriptorName=ldapsecure
+Service=traefik.service
+
+[Install]
+WantedBy=sockets.target

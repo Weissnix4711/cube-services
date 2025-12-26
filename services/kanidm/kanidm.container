@@ -1,0 +1,26 @@
+[Unit]
+Description=Kanidm SSO
+
+[Container]
+Image=ghcr.io/weissnix4711/kanidm:latest
+UserNS=keep-id
+Volume=/var/mnt/apps/data/kanidm:/data
+# Reverse proxy
+Network=web.network
+Label="traefik.enabled=true"
+# Web UI
+Label="traefik.http.routers.kanidm.rule=Host(``)"
+Label="traefik.http.services.kanidm.loadbalancer.server.port=8443"
+Label="traefik.http.services.kanidm.loadbalancer.server.scheme=https"
+# LDAPS
+Label="traefik.tcp.routers.kanidm-ldap.rule=HostSNI(`*`)"
+Label="traefik.tcp.routers.kanidm-ldap.entrypoints=ldapsecure"
+Label="traefik.tcp.routers.kanidm-ldap.tls=true"
+Label="traefik.tcp.routers.kanidm-ldap.tls.certresolver=le"
+Label="traefik.tcp.services.kanidm-ldap.loadbalancer.server.port=3636"
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

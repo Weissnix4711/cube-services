@@ -6,6 +6,8 @@ Description=Reverse proxy
 [Container]
 Image=docker.io/library/traefik:latest
 Network=web.network
+NetworkAlias=traefik
+IP=10.99.0.10
 # sd_notify supported
 Notify=true
 # Allow podman sock access
@@ -14,20 +16,25 @@ Volume=%t/podman/podman.sock:/var/run/docker.sock
 Volume=/var/mnt/apps/certs:/letsencrypt:z
 # TODO email in secrets
 # redirections to :443 not websecure see https://github.com/traefik/traefik/issues/12469
-Exec='--entrypoints.web' \
+# insecureskipverify needed for kanidm (web ui and ldap)
+Exec= \
+    '--entrypoints.web' \
     '--entrypoints.web.http.redirections.entryPoint.to=:443' \
     '--entrypoints.web.http.redirections.entryPoint.scheme=https' \
     '--entrypoints.websecure' \
     '--entrypoints.websecure.asDefault=true' \
     '--entrypoints.websecure.http.tls=true' \
     '--entrypoints.websecure.http.tls.certresolver=le' \
+    '--entrypoints.ldapsecure' \
     '--log.level=INFO' \
     '--providers.docker=true' \
     '--providers.docker.exposedbydefault=false' \
     '--certificatesresolvers.le.acme.email=aldrian.thom+letsencrypt@proton.me' \
     '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json' \
     '--certificatesresolvers.le.acme.dnschallenge=true' \
-    '--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare'
+    '--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare' \
+    '--serverstransport.tls.insecureskipverify' \
+    '--tcpserverstransport.tls.insecureskipverify'
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
 
