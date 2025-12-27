@@ -50,7 +50,7 @@ Label="traefik.tls.stores.default.defaultgeneratedcert.domain.sans=*.thomasaldri
 
 [Service]
 Restart=on-failure
-Sockets=http.socket https.socket
+Sockets=http.socket https.socket ldap.socket
 
 [Install]
 WantedBy=default.target
