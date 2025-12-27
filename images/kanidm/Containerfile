@@ -1,12 +1,15 @@
 FROM docker.io/kanidm/server:latest
 
+# We have no shell, no utils. This must match host.
+ARG USER_GID=1000
+
 # Config
-COPY --chmod=440 server.toml /server.toml
+COPY --chown=0:${USER_GID} --chmod=440 server.toml /server.toml
 ENV KANIDM_CONFIG=/server.toml
 
 # certs
-COPY --chmod=440 certs/chain.pem /chain.pem
-COPY --chmod=440 certs/key.pem /key.pem
+COPY --chown=0:${USER_GID} --chmod=440 certs/chain.pem /chain.pem
+COPY --chown=0:${USER_GID} --chmod=440 certs/key.pem /key.pem
 
 # Test config 
 # This doesn't necessarily return a non-zero code on failure
