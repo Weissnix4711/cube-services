@@ -39,8 +39,14 @@ Exec= \
     '--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare' \
     '--serverstransport.insecureskipverify' \
     '--tcpserverstransport.tls.insecureskipverify'
+# Cloudflare API used for le DNS challenge
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
+# Serve 404 and ldaps with le certs
+Label="traefik.enable=true"
+Label="traefik.tls.stores.default.defaultgeneratedcert.resolver=le"
+Label="traefik.tls.stores.default.defaultgeneratedcert.domain.main=traefik.thomasaldrian.net"
+Label="traefik.tls.stores.default.defaultgeneratedcert.domain.sans=*.thomasaldrian.net"
 
 [Service]
 Restart=on-failure
