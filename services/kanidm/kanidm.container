@@ -7,7 +7,7 @@ UserNS=keep-id
 Volume=/var/mnt/apps/data/kanidm:/data
 # Reverse proxy
 Network=web.network
-Label="traefik.enabled=true"
+Label="traefik.enable=true"
 # Web UI
 Label="traefik.http.routers.kanidm.rule=Host(``)"
 Label="traefik.http.services.kanidm.loadbalancer.server.port=8443"
