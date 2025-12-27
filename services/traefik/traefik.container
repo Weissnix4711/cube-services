@@ -45,8 +45,7 @@ Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
 # Serve 404 and ldaps with le certs
 Label="traefik.enable=true"
 Label="traefik.tls.stores.default.defaultgeneratedcert.resolver=le"
-Label="traefik.tls.stores.default.defaultgeneratedcert.domain.main=traefik.thomasaldrian.net"
-Label="traefik.tls.stores.default.defaultgeneratedcert.domain.sans=*.thomasaldrian.net"
+Label="traefik.tls.stores.default.defaultgeneratedcert.domain.main=*.thomasaldrian.net"
 
 [Service]
 Restart=on-failure
