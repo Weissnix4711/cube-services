@@ -23,6 +23,7 @@ Label="traefik.tcp.routers.kanidm-ldap.tls=true"
 Label="traefik.tcp.routers.kanidm-ldap.tls.certresolver=le"
 Label="traefik.tcp.routers.kanidm-ldap.tls.domains[0].main=idm.thomasaldrian.net"
 Label="traefik.tcp.services.kanidm-ldap.loadbalancer.server.port=3636"
+Label="traefik.tcp.services.kanidm-ldap.loadbalancer.server.tls=true"
 
 [Service]
 Restart=on-failure
