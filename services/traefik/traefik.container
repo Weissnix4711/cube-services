@@ -1,6 +1,10 @@
 [Unit]
-After=http.socket https.socket
-Requires=http.socket https.socket
+# sockets
+After=http.socket https.socket ldap.socket
+Requires=http.socket https.socket ldap.socket
+# remote-fs
+After=podman-user-wait-remote-fs.service
+Wants=podman-user-wait-remote-fs.service
 Description=Reverse proxy
 
 [Container]

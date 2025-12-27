@@ -1,0 +1,11 @@
+[Unit]
+Description=Wait for system level remote-fs.target as user.
+Documentation=https://github.com/containers/podman/issues/27286
+
+[Service]
+Type=oneshot
+# Set a timeout as by default oneshot does not have one and in case remote-fs.target
+# never comes online we do not want to block forever, 90s is the default systemd unit timeout.
+TimeoutStartSec=90s
+ExecStart=/bin/sh -c 'until systemctl is-active remote-fs.target; do sleep 0.5; done'
+RemainAfterExit=yes

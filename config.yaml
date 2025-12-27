@@ -6,3 +6,7 @@ targetConfigs:
     targetPath: "services"
     branch: "main"
     schedule: "1/10 * * * * *"
+  - url: https://github.com/Weissnix4711/cube-services
+    targetPath: "systemd"
+    branch: "main"
+    schedule: "1/10 * * * * *"
