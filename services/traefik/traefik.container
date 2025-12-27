@@ -46,6 +46,10 @@ Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
 Label="traefik.enable=true"
 Label="traefik.tls.stores.default.defaultgeneratedcert.resolver=le"
 Label="traefik.tls.stores.default.defaultgeneratedcert.domain.main=*.thomasaldrian.net"
+# No defined routers will use docker defaultRule
+# The following will still error unless API is enabled, but at least doesn't request nonsense certs.
+Label="traefik.http.routers.dashboard.rule=Host(`traefik.thomasaldrian.net`)"
+Label="traefik.http.routers.dashboard.service=api@internal"
 
 [Service]
 Restart=on-failure
