@@ -9,7 +9,7 @@ Volume=/var/mnt/apps/data/kanidm:/data
 Network=web.network
 Label="traefik.enable=true"
 # Web UI
-Label="traefik.http.routers.kanidm.rule=Host(``)"
+Label="traefik.http.routers.kanidm.rule=Host(`idm.thomasaldrian.net`)"
 Label="traefik.http.services.kanidm.loadbalancer.server.port=8443"
 Label="traefik.http.services.kanidm.loadbalancer.server.scheme=https"
 # LDAPS
