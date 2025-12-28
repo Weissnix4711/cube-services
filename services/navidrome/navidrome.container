@@ -4,7 +4,7 @@ After=podman-user-wait-remote-fs.service
 Description=Music Server
 
 [Container]
-Image=deluan/navidrome:latest
+Image=docker.io/deluan/navidrome:latest
 UserNS=keep-id
 Volume=/var/mnt/apps/data/navidrome:/data
 Volume=/var/mnt/media/music:/music:ro
