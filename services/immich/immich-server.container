@@ -1,0 +1,37 @@
+[Unit]
+Requires=immich-redis.container immich-database.container
+After=immich-redis.container immich-database.container
+Wants=immich-machine-learning.container
+Description=Immich server
+# remote-fs
+Wants=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+
+[Container]
+Image=ghcr.io/immich-app/immich-server:v2
+Pod=immich.pod
+UserNS=keep-id
+Volume=/var/mnt/apps/data/immich/data:/data
+Volume=/etc/localtime:/etc/localtime:ro
+# TODO vaapi
+# AddDevice=/dev/dri
+# Healthcheck
+Notify=healthy
+# Pod
+Environment=DB_HOSTNAME=localhost
+Environment=REDIS_HOSTNAME=localhost
+# Database
+Environment=DB_USERNAME=postgres
+Environment=DB_DATABASE_NAME=immich
+Secret=immich-db-password,type=env,target=DB_PASSWORD
+# Reverse proxy
+Network=web.network
+Label="traefik.enable=true"
+Label="traefik.http.routers.immich.rule=Host(`immich.thomasaldrian.net`)"
+# TODO may need to increase timeouts https://docs.immich.app/administration/reverse-proxy/#traefik-proxy-example-config
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

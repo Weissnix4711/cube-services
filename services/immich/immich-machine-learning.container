@@ -1,0 +1,12 @@
+[Unit]
+Description=Immich ML
+
+[Container]
+Image=ghcr.io/immich-app/immich-machine-learning:v2
+Pod=immich.pod
+Volume=immich-model-cache.volume:/cache
+# Healthcheck
+Notify=healthy
+
+[Service]
+Restart=on-failure
