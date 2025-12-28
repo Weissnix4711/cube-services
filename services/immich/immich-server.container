@@ -1,7 +1,8 @@
 [Unit]
-Requires=immich-redis.container immich-database.container
-After=immich-redis.container immich-database.container
-Wants=immich-machine-learning.container
+# must use .service not .container pre v5.5.0
+Requires=immich-redis.service immich-database.service
+After=immich-redis.service immich-database.service
+Wants=immich-machine-learning.service
 Description=Immich server
 # remote-fs
 Wants=podman-user-wait-remote-fs.service
