@@ -1,7 +1,7 @@
 FROM docker.io/kanidm/server:latest
 
 # We have no shell, no utils. This must match host.
-ARG USER_GID=1000
+ARG USER_GID=3000
 
 # Config
 COPY --chown=0:${USER_GID} --chmod=440 server.toml /server.toml

@@ -5,7 +5,9 @@ Description=Kanidm SSO
 
 [Container]
 Image=ghcr.io/weissnix4711/kanidm:latest
-UserNS=keep-id
+User=3000
+Group=3000
+UIDMap="+3000:@3000:1"
 Volume=/var/mnt/apps/data/kanidm:/data
 # Reverse proxy
 Network=web.network
