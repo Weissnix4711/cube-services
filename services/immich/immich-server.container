@@ -11,7 +11,8 @@ After=podman-user-wait-remote-fs.service
 [Container]
 Image=ghcr.io/immich-app/immich-server:v2
 Pod=immich.pod
-UserNS=keep-id
+User=3000
+Group=3000
 Volume=/var/mnt/apps/data/immich/data:/data
 Volume=/etc/localtime:/etc/localtime:ro
 # TODO vaapi
