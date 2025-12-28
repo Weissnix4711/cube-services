@@ -1,4 +1,4 @@
 [Pod]
 # Immich (specifically postgres db) is fussy about who owns the data volume.
 # This maps nfsuser (3000) so files don't appear as being owned by nobody:nogroup
-SubUIDMap="+3000:@3000:1"
+UIDMap="+3000:@3000:1"
