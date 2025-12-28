@@ -2,3 +2,7 @@
 # Immich (specifically postgres db) is fussy about who owns the data volume.
 # This maps nfsuser (3000) so files don't appear as being owned by nobody:nogroup
 UIDMap="+3000:@3000:1"
+# If a single container has --network it loses the pod network namespace
+# so we connect the entire pod to web.network instead
+# TODO find a better alternative?
+Network=web.network

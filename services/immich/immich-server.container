@@ -28,7 +28,6 @@ Environment=DB_USERNAME=postgres
 Environment=DB_DATABASE_NAME=immich
 Secret=immich-db-password,type=env,target=DB_PASSWORD
 # Reverse proxy
-Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.immich.rule=Host(`immich.thomasaldrian.net`)"
 # TODO may need to increase timeouts https://docs.immich.app/administration/reverse-proxy/#traefik-proxy-example-config
