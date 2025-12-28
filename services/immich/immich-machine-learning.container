@@ -7,6 +7,7 @@ Pod=immich.pod
 Volume=immich-model-cache.volume:/cache
 # Healthcheck
 Notify=healthy
+HealthCmd=python3 healthcheck.py
 
 [Service]
 Restart=on-failure

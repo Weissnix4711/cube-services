@@ -16,6 +16,10 @@ Secret=immich-db-password,type=env,target=POSTGRES_PASSWORD
 Environment=POSTGRES_INITDB_ARGS=--data-checksums
 # Healthcheck
 Notify=healthy
+# HEALTHCHECK directive ignored in OCI images so we must define here
+HealthCmd=/usr/local/bin/healthcheck.sh
+HealthInterval=5m
+HealthStartPeriod=5m
 
 [Service]
 Restart=on-failure
