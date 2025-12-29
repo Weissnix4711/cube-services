@@ -30,6 +30,7 @@ Secret=immich-db-password,type=env,target=DB_PASSWORD
 # Reverse proxy
 Label="traefik.enable=true"
 Label="traefik.http.routers.immich.rule=Host(`immich.thomasaldrian.net`)"
+Label="traefik.http.services.immich.loadbalancer.server.port=2283"
 # TODO may need to increase timeouts https://docs.immich.app/administration/reverse-proxy/#traefik-proxy-example-config
 
 [Service]
