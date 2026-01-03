@@ -6,3 +6,7 @@ UIDMap="+3000:@3000:1"
 # so we connect the entire pod to web.network instead
 # TODO find a better alternative?
 Network=web.network
+# Resolve idm even when network is down.
+# Cannot use static ip of cthost for some reason
+# Nor can we use traefik because it currently only listens on sockets.
+AddHost=idm.thomasaldrian.net:host-gateway
