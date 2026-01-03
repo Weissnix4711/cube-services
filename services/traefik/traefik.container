@@ -62,6 +62,10 @@ Label="traefik.http.services.pve.loadbalancer.server.url=https://pve.cube.thomas
 Label="traefik.http.routers.cthost.rule=Host(`cthost.cube.thomasaldrian.net`)"
 Label="traefik.http.routers.cthost.service=cthost"
 Label="traefik.http.services.cthost.loadbalancer.server.url=https://host.containers.internal:9090"
+# Home Assistant
+Label="traefik.http.routers.homeassistant.rule=Host(`home.thomasaldrian.net`)"
+Label="traefik.http.routers.homeassistant.service=homeassistant"
+Label="traefik.http.services.homeassistant.loadbalancer.server.url=http://homeassistant.cube.thomasaldrian.net"
 
 [Service]
 Restart=on-failure
