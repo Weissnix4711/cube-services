@@ -50,6 +50,15 @@ Label="traefik.tls.stores.default.defaultgeneratedcert.domain.main=*.thomasaldri
 # The following will still error unless API is enabled, but at least doesn't request nonsense certs.
 Label="traefik.http.routers.dashboard.rule=Host(`traefik.thomasaldrian.net`)"
 Label="traefik.http.routers.dashboard.service=api@internal"
+# TrueNAS
+Label="traefik.http.routers.truenas.rule=Host(`nas.thomasaldrian.net`)"
+Label="traefik.http.services.truenas.loadbalancer.server.url=https://truenas.cube.thomasaldrian.net"
+# PVE
+Label="traefik.http.routers.pve.rule=Host(`pve.thomasaldrian.net`)"
+Label="traefik.http.services.pve.loadbalancer.server.url=https://pve.cube.thomasaldrian.net"
+# cthost
+Label="traefik.http.routers.cthost.rule=Host(`cthost.cube.thomasaldrian.net`)"
+Label="traefik.http.services.cthost.loadbalancer.server.url=https://cthost.cube.thomasaldrian.net:9090"
 
 [Service]
 Restart=on-failure
