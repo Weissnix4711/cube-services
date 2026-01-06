@@ -13,6 +13,16 @@ Environment=ND_LOGLEVEL=info
 Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.navidrome.rule=Host(`music.thomasaldrian.net`)"
+# OIDC
+Label="traefik.http.routers.navidrome.middlewares=navidrome-auth"
+Label="traefik.http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Provider.Url=https://idm.thomasaldrian.net/oauth2/openid/navidrome"
+Label="traefik.http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Provider.ClientId=navidrome"
+Label="traefik.http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Provider.UsePkce=true"
+Label="traefik.http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Scopes=openid,profile"
+Label="traefik.http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Headers[0].Name=Remote-User"
+Label="traefik.http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Headers[0].Value={{ .claims.preferred_username }}"
+# Bypass for share and subsonic endpoints
+Label="traefik.http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.BypassAuthenticationRule=PathPrefix(`/share/`) || PathPrefix(`/rest/`)"
 
 [Service]
 Restart=on-failure

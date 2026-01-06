@@ -38,7 +38,9 @@ Exec= \
     '--certificatesresolvers.le.acme.dnschallenge=true' \
     '--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare' \
     '--serverstransport.insecureskipverify' \
-    '--tcpserverstransport.tls.insecureskipverify'
+    '--tcpserverstransport.tls.insecureskipverify' \
+    '--experimental.plugins.traefik-oidc-auth.modulename=github.com/sevensolutions/traefik-oidc-auth' \
+    '--experimental.plugins.traefik-oidc-auth.version=v0.17.0'
 # Cloudflare API used for le DNS challenge
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
