@@ -9,6 +9,7 @@ UserNS=keep-id
 Volume=/var/mnt/apps/data/navidrome:/data
 Volume=/var/mnt/media/music:/music:ro
 Environment=ND_LOGLEVEL=info
+Environment=ND_EXTAUTH_TRUSTEDSOURCES=10.99.0.0/28
 # Reverse proxy
 Network=web.network
 Label="traefik.enable=true"
