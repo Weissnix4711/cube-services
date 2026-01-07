@@ -5,6 +5,7 @@ Description=Forgejo git server
 
 [Container]
 Image=codeberg.org/forgejo/forgejo:13-rootless
+AutoUpdate=registry
 User=3000:3000
 UIDMap="+3000:@3000:1"
 Volume=/var/mnt/apps/data/forgejo:/var/lib/gitea

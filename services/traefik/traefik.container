@@ -9,6 +9,7 @@ Description=Reverse proxy
 
 [Container]
 Image=docker.io/library/traefik:latest
+AutoUpdate=registry
 Network=web.network
 NetworkAlias=traefik
 IP=10.99.0.10
