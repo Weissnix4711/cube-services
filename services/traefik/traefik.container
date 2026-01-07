@@ -57,9 +57,9 @@ Label="traefik.http.routers.truenas.rule=Host(`nas.thomasaldrian.net`)"
 Label="traefik.http.routers.truenas.service=truenas"
 Label="traefik.http.services.truenas.loadbalancer.server.url=https://truenas.cube.thomasaldrian.net"
 # PVE
-Label="traefik.http.routers.pve.rule=Host(`pve.thomasaldrian.net`)"
+Label="traefik.http.routers.pve.rule=Host(`pve.cube.thomasaldrian.net`)"
 Label="traefik.http.routers.pve.service=pve"
-Label="traefik.http.services.pve.loadbalancer.server.url=https://pve.cube.thomasaldrian.net"
+Label="traefik.http.services.pve.loadbalancer.server.url=https://10.10.10.1:8006"
 # cthost
 Label="traefik.http.routers.cthost.rule=Host(`cthost.cube.thomasaldrian.net`)"
 Label="traefik.http.routers.cthost.service=cthost"
