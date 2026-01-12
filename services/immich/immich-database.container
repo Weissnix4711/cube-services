@@ -20,7 +20,7 @@ Notify=healthy
 # HEALTHCHECK directive ignored in OCI images so we must define here
 HealthCmd=/usr/local/bin/healthcheck.sh
 HealthInterval=5m
-HealthStartPeriod=5m
+HealthStartPeriod=1m
 
 [Service]
 Restart=on-failure
