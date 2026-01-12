@@ -5,7 +5,7 @@ After=immich-redis.service immich-database.service
 Wants=immich-machine-learning.service
 Description=Immich server
 # remote-fs
-Wants=podman-user-wait-remote-fs.service
+Requires=podman-user-wait-remote-fs.service
 After=podman-user-wait-remote-fs.service
 
 [Container]
