@@ -19,8 +19,9 @@ Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Notify=healthy
 # HEALTHCHECK directive ignored in OCI images so we must define here
 HealthCmd=/usr/local/bin/healthcheck.sh
-HealthInterval=5m
-HealthStartPeriod=1m
+HealthStartupCmd=/usr/local/bin/healthcheck.sh
+HealthInterval=2m
+HealthStartupInterval=30s
 
 [Service]
 Restart=on-failure

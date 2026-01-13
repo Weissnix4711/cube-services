@@ -20,8 +20,9 @@ Volume=/etc/localtime:/etc/localtime:ro
 # Healthcheck
 Notify=healthy
 HealthCmd=immich-healthcheck
+HealthStartupCmd=immich-healthcheck
 HealthInterval=2m
-HealthStartPeriod=5m
+HealthStartupInterval=30s
 # Pod
 Environment=DB_HOSTNAME=localhost
 Environment=REDIS_HOSTNAME=localhost
