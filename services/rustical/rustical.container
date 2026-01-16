@@ -1,0 +1,25 @@
+[Unit]
+Requires=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+Description=RustiCal Cal/CardDAV server
+
+[Container]
+Image=ghcr.io/weissnix4711/rustical:latest
+AutoUpdate=registry
+UserNS=keep-id
+Volume=/var/mnt/apps/data/rustical:/var/lib/rustical
+Secret=rustical-client-secret,type=env,target=RUSTICAL_OIDC__CLIENT_SECRET
+# Reverse proxy
+Network=web.network
+Label="traefik.enable=true"
+Label="traefik.http.routers.rustical.rule=Host(`dav.thomasaldrian.net`)"
+# Healthcheck
+Notify=healthy
+HealthCmd="/usr/local/bin/rustical health"
+HealthStartPeriod=20s
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

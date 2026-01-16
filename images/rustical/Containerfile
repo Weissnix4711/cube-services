@@ -1,0 +1,3 @@
+FROM ghcr.io/lennart-k/rustical:latest
+
+COPY config.toml /etc/rustical/config.toml

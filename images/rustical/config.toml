@@ -1,0 +1,12 @@
+[oidc]
+name = "CubeIDM"
+issuer = "https://idm.thomasaldrian.net"
+client_id = "rustical"
+# client_secret = ""            # Modified in env
+claim_userid = "sub"            # preferred_username can be changed by users, but this should be unique
+scopes = ["openid", "profile"]  # we do not use groups
+# require_group = ""            # Not used
+allow_sign_up = true
+
+[frontend]
+allow_password_login = false
