@@ -15,7 +15,7 @@ Label="traefik.enable=true"
 Label="traefik.http.routers.rustical.rule=Host(`dav.thomasaldrian.net`)"
 # Healthcheck
 Notify=healthy
-HealthCmd="/usr/local/bin/rustical health"
+HealthCmd=["/usr/local/bin/rustical", "health"]
 HealthStartPeriod=20s
 
 [Service]

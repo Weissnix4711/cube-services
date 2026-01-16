@@ -1,6 +1,6 @@
 [oidc]
 name = "CubeIDM"
-issuer = "https://idm.thomasaldrian.net"
+issuer = "https://idm.thomasaldrian.net/oauth2/openid/rustical"
 client_id = "rustical"
 # client_secret = ""            # Modified in env
 claim_userid = "sub"            # preferred_username can be changed by users, but this should be unique
