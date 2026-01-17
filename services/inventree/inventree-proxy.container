@@ -1,0 +1,21 @@
+[Unit]
+Requires=inventree-server.container
+After=inventree-server.container
+PartOf=inventree-server.container
+# remote-fs
+Requires=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+Description=InvenTree web server
+
+[Container]
+Image=ghcr.io/weissnix4711/inventree-proxy:latest
+Pod=inventree.pod
+User=3000
+Group=3000
+Volume=/var/mnt/apps/data/inventree/data/static:/var/www/static:z
+Volume=/var/mnt/apps/data/inventree/data/media:/var/www/media:z
+Label="traefik.enable=true"
+Label="traefik.http.routers.dashboard.rule=Host(`inventree.thomasaldrian.net`)"
+
+[Service]
+Restart=on-failure

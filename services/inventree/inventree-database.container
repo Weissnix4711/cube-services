@@ -1,0 +1,18 @@
+[Unit]
+Requires=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+Description=InvenTree database
+
+[Container]
+Image=docker.io/library/postgres:17
+Pod=inventree.pod
+User=3000
+Group=3000
+Volume=/var/mnt/apps/data/inventree/db:/var/lib/postgresql/data
+Environment=POSTGRES_USER=pguser
+Environment=POSTGRES_DB=inventree
+Secret=inventree-db-password,type=env,target=POSTGRES_PASSWORD
+
+[Service]
+Restart=on-failure
+ExecStartPre=/usr/bin/mkdir -p /var/mnt/apps/data/inventree/db

@@ -1,0 +1,4 @@
+# note: never use the :latest tag in a production site
+FROM docker.io/library/caddy:2
+
+COPY Caddyfile /etc/caddy/Caddyfile

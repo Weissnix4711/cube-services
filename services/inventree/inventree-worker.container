@@ -1,0 +1,19 @@
+[Unit]
+Requires=inventree-server.container
+After=inventree-server.container
+PartOf=inventree-server.container
+# remote-fs
+Requires=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+Description=InvenTree worker
+
+[Container]
+Image=ghcr.io/weissnix4711/inventree:stable
+Pod=inventree.pod
+User=3000
+Group=3000
+Volume=/var/mnt/apps/data/inventreed/data:/home/inventree/data:z
+Exec=invoke worker
+
+[Service]
+Restart=on-failure

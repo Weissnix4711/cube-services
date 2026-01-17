@@ -1,0 +1,12 @@
+[Unit]
+Description=InvenTree cache
+
+[Container]
+Image=docker.io/library/redis:7-alpine
+Pod=inventree.pod
+# Healthcheck
+HealthCmd="redis-cli ping || exit 1"
+Notify=healthy
+
+[Service]
+Restart=on-failure

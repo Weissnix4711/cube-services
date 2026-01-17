@@ -1,0 +1,4 @@
+FROM docker.io/inventree/inventree:stable
+
+COPY config.yaml /home/inventree/config.yaml
+ENV INVENTREE_CONFIG_FILE=/home/inventree/config.yaml

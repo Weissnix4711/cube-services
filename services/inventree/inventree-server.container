@@ -1,0 +1,29 @@
+[Unit]
+Requires=inventree-database.container inventree-redis.container
+After=inventree-database.container inventree-redis.container
+Wants=inventree-worker.container inventree-proxy.container
+# remote-fs
+Requires=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+Description=InvenTree server
+
+[Container]
+Image=ghcr.io/weissnix4711/inventree:stable
+Pod=inventree.pod
+User=3000
+Group=3000
+Volume=/var/mnt/apps/data/inventree/data:/home/inventree/data:z
+# inventree-database
+Environment=INVENTREE_DB_HOST=localhost
+Environment=INVENTREE_DB_USER=pguser
+Secret=inventree-db-password,type=env,target=INVENTREE_DB_PASSWORD
+# inventree-cache
+Environment=INVENTREE_CACHE_ENABLED=True
+Environment=INVENTREE_CACHE_HOST=localhost
+
+[Service]
+Restart=on-failure
+ExecStartPre=/usr/bin/mkdir -p /var/mnt/apps/data/inventree/data
+
+[Install]
+WantedBy=default.target
