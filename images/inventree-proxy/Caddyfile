@@ -50,6 +50,6 @@
 
 	# All other requests are proxied to the InvenTree server
 	reverse_proxy "http://localhost:8000" {
-		trusted_proxies static 10.99.0.0/28
+		trusted_proxies 10.99.0.0/28
 	}
 }
