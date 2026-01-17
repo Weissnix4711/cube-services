@@ -202,6 +202,7 @@ social_backends:
 social_providers:
   openid_connect:
     OAUTH_PKCE_ENABLED: true
+    VERIFIED_EMAIL: true
 
 # Add LDAP support (refer to the documentation for available options)
 # Ref: https://docs.inventree.org/en/stable/start/advanced/#ldap
