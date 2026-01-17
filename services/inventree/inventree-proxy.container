@@ -15,7 +15,8 @@ Group=3000
 Volume=/var/mnt/apps/data/inventree/data/static:/var/www/static:z
 Volume=/var/mnt/apps/data/inventree/data/media:/var/www/media:z
 Label="traefik.enable=true"
-Label="traefik.http.routers.dashboard.rule=Host(`inventree.thomasaldrian.net`)"
+Label="traefik.http.routers.inventree.rule=Host(`inventree.thomasaldrian.net`)"
+Label="traefik.http.services.inventree.loadbalancer.server.port=80"
 
 [Service]
 Restart=on-failure
