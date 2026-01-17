@@ -1,7 +1,7 @@
 [Unit]
-Requires=inventree-database.container inventree-redis.container
-After=inventree-database.container inventree-redis.container
-Wants=inventree-worker.container inventree-proxy.container
+Requires=inventree-database.service inventree-redis.service
+After=inventree-database.service inventree-redis.service
+Wants=inventree-worker.service inventree-proxy.service
 # remote-fs
 Requires=podman-user-wait-remote-fs.service
 After=podman-user-wait-remote-fs.service

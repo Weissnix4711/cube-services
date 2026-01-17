@@ -1,7 +1,7 @@
 [Unit]
-Requires=inventree-server.container
-After=inventree-server.container
-PartOf=inventree-server.container
+Requires=inventree-server.service
+After=inventree-server.service
+PartOf=inventree-server.service
 # remote-fs
 Requires=podman-user-wait-remote-fs.service
 After=podman-user-wait-remote-fs.service
