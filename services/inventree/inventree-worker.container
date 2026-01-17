@@ -10,8 +10,6 @@ Description=InvenTree worker
 [Container]
 Image=ghcr.io/weissnix4711/inventree:stable
 Pod=inventree.pod
-User=3000
-Group=3000
 Volume=/var/mnt/apps/data/inventree/data:/home/inventree/data:z
 Exec=invoke worker
 
