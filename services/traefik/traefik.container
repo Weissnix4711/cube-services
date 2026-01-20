@@ -1,7 +1,7 @@
 [Unit]
 # sockets
-After=http.socket https.socket ldap.socket
-Requires=http.socket https.socket ldap.socket
+After=http.socket https.socket ldap.socket ssh.socket
+Requires=http.socket https.socket ldap.socket ssh.socket
 # remote-fs
 After=podman-user-wait-remote-fs.service
 Requires=podman-user-wait-remote-fs.service
@@ -31,6 +31,7 @@ Exec= \
     '--entrypoints.websecure.http.tls=true' \
     '--entrypoints.websecure.http.tls.certresolver=le' \
     '--entrypoints.ldapsecure' \
+    '--entrypoints.sshalt' \
     '--log.level=INFO' \
     '--providers.docker=true' \
     '--providers.docker.exposedbydefault=false' \

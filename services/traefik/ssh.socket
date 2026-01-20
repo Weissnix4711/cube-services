@@ -1,0 +1,7 @@
+[Socket]
+ListenStream=2222
+FileDescriptorName=sshalt
+Service=traefik.service
+
+[Install]
+WantedBy=sockets.target

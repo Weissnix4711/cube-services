@@ -14,6 +14,10 @@ Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.forgejo.rule=Host(`git.thomasaldrian.net`)"
 Label="traefik.http.services.forgejo.loadbalancer.server.port=3000"
+# SSH
+Label="traefik.tcp.routers.forgejo-ssh.rule=HostSNI(`*`)"
+Label="traefik.tcp.routers.forgejo-ssh.entrypoints=sshalt"
+Label="traefik.tcp.services.forgejo-ssh.loadbalancer.server.port=2222"
 
 [Service]
 Restart=on-failure
