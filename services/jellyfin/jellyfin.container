@@ -1,0 +1,26 @@
+[Unit]
+# remote-fs
+Requires=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+Description=Jellyfin media server
+
+[Container]
+Image=docker.io/jellyfin/jellyfin:10
+AutoUpdate=registry
+UserNS=keep-id
+# Volumes
+Volume=jellyfin-cache.volume:/cache
+Volume=/var/mnt/apps/data/jellyfin/config:/config
+Volume=/var/mnt/media/movies:/media:ro
+# Reverse proxy
+Network=web.network
+Label="traefik.enable=true"
+Label="traefik.http.routers.jellyfin.rule=Host(`media.thomasaldrian.net`)"
+Label="traefik.http.services.jellyfin.loadbalancer.server.port=8096"
+
+[Service]
+Restart=on-failure
+ExecStartPre=/usr/bin/mkdir -p /var/mnt/apps/data/jellyfin/config
+
+[Install]
+WantedBy=default.target
