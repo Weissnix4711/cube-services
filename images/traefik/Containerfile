@@ -1,0 +1,5 @@
+FROM docker.io/library/traefik:latest
+
+RUN mkdir -p /etc/traefik/dynamic
+COPY traefik.toml /etc/traefik
+COPY dynamic/ /etc/traefik/dynamic
