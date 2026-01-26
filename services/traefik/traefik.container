@@ -8,7 +8,7 @@ Requires=podman-user-wait-remote-fs.service
 Description=Reverse proxy
 
 [Container]
-Image=docker.io/library/traefik:latest
+Image=ghcr.io/weissnix4711/traefik:latest
 AutoUpdate=registry
 Network=web.network
 NetworkAlias=traefik
@@ -20,56 +20,9 @@ SecurityLabelType=container_runtime_t
 Volume=%t/podman/podman.sock:/var/run/docker.sock
 Volume=/var/mnt/apps/certs:/letsencrypt:z
 # TODO email in secrets
-# redirections to :443 not websecure see https://github.com/traefik/traefik/issues/12469
-# insecureskipverify needed for kanidm (web ui and ldap)
-Exec= \
-    '--entrypoints.web' \
-    '--entrypoints.web.http.redirections.entryPoint.to=:443' \
-    '--entrypoints.web.http.redirections.entryPoint.scheme=https' \
-    '--entrypoints.websecure' \
-    '--entrypoints.websecure.asDefault=true' \
-    '--entrypoints.websecure.http.tls=true' \
-    '--entrypoints.websecure.http.tls.certresolver=le' \
-    '--entrypoints.ldapsecure' \
-    '--entrypoints.sshalt' \
-    '--log.level=INFO' \
-    '--providers.docker=true' \
-    '--providers.docker.exposedbydefault=false' \
-    '--certificatesresolvers.le.acme.email=aldrian.thom+letsencrypt@proton.me' \
-    '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json' \
-    '--certificatesresolvers.le.acme.dnschallenge=true' \
-    '--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare' \
-    '--serverstransport.insecureskipverify' \
-    '--tcpserverstransport.tls.insecureskipverify' \
-    '--experimental.plugins.traefik-oidc-auth.modulename=github.com/sevensolutions/traefik-oidc-auth' \
-    '--experimental.plugins.traefik-oidc-auth.version=v0.17.0'
 # Cloudflare API used for le DNS challenge
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
 Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
-# Serve 404 and ldaps with le certs
-Label="traefik.enable=true"
-Label="traefik.tls.stores.default.defaultgeneratedcert.resolver=le"
-Label="traefik.tls.stores.default.defaultgeneratedcert.domain.main=*.thomasaldrian.net"
-# No defined routers will use docker defaultRule
-# The following will still error unless API is enabled, but at least doesn't request nonsense certs.
-Label="traefik.http.routers.dashboard.rule=Host(`traefik.thomasaldrian.net`)"
-Label="traefik.http.routers.dashboard.service=api@internal"
-# TrueNAS
-Label="traefik.http.routers.truenas.rule=Host(`nas.thomasaldrian.net`)"
-Label="traefik.http.routers.truenas.service=truenas"
-Label="traefik.http.services.truenas.loadbalancer.server.url=https://truenas.cube.thomasaldrian.net"
-# PVE
-Label="traefik.http.routers.pve.rule=Host(`pve.cube.thomasaldrian.net`)"
-Label="traefik.http.routers.pve.service=pve"
-Label="traefik.http.services.pve.loadbalancer.server.url=https://10.10.10.1:8006"
-# cthost
-Label="traefik.http.routers.cthost.rule=Host(`cthost.cube.thomasaldrian.net`)"
-Label="traefik.http.routers.cthost.service=cthost"
-Label="traefik.http.services.cthost.loadbalancer.server.url=https://host.containers.internal:9090"
-# Home Assistant
-Label="traefik.http.routers.homeassistant.rule=Host(`home.thomasaldrian.net`)"
-Label="traefik.http.routers.homeassistant.service=homeassistant"
-Label="traefik.http.services.homeassistant.loadbalancer.server.url=http://homeassistant.cube.thomasaldrian.net:8123"
 
 [Service]
 Restart=on-failure

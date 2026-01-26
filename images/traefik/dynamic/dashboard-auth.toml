@@ -1,0 +1,6 @@
+[http.middlewares.dashboard-auth.plugin.traefik-oidc-auth]
+  Scopes = "openid,profile"
+  [http.middlewares.dashboard-auth.plugin.traefik-oidc-auth.Provider]
+    ClientId = "traefik"
+    Url = "https://idm.thomasaldrian.net/oauth2/openid/traefik"
+    UsePkce = true

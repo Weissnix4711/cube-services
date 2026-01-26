@@ -1,0 +1,17 @@
+[http.middlewares.sec-headers]
+  [http.middlewares.sec-headers.headers]
+    browserXssFilter = true
+    # contentSecurityPolicy = """
+    #   default-src 'self'; \
+    # """
+    # accesscontrolallowmethods = "GET, HEAD, POST"
+    contentTypeNosniff = true
+    forceSTSHeader = true
+    frameDeny = true
+    referrerPolicy = "same-origin"
+    sslRedirect = true
+    stsIncludeSubdomains = false
+    stsPreload = false
+    stsSeconds = 31536000
+    # [http.middlewares.sec-headers.headers.customResponseHeaders]
+    #   X-Robots-Tag = "none,nofollow,noindex,noarchive,nosnippet,notranslate,noimageindex"
