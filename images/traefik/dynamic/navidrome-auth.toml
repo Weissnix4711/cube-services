@@ -1,0 +1,13 @@
+[http.middlewares.navidrome-auth.plugin.traefik-oidc-auth]
+  # Bypass for share and subsonic endpoints
+  BypassAuthenticationRule = "PathPrefix(`/share/`) || PathPrefix(`/rest/`)"
+  Scopes = ["openid", "profile"]
+  [http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Provider]
+    ClientId = "navidrome"
+    Url = "https://idm.thomasaldrian.net/oauth2/openid/navidrome"
+    UsePkce = true
+  [[http.middlewares.navidrome-auth.plugin.traefik-oidc-auth.Headers]]
+    Name = "Remote-User"
+    # Must escape weirdly when change to file config
+    # See https://traefik-oidc-auth.sevensolutions.cc/docs/getting-started/middleware-configuration#header
+    Value = "{{`{{ .claims.preferred_username }}`}}"
