@@ -10,6 +10,7 @@ After=podman-user-wait-remote-fs.service
 
 [Container]
 Image=ghcr.io/immich-app/immich-server:v2
+AutoUpdate=registry
 Pod=immich.pod
 User=3000
 Group=3000

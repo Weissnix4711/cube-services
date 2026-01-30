@@ -3,6 +3,7 @@ Description=Immich ML
 
 [Container]
 Image=ghcr.io/immich-app/immich-machine-learning:v2
+AutoUpdate=registry
 Pod=immich.pod
 Volume=immich-model-cache.volume:/cache
 # Healthcheck
