@@ -6,8 +6,8 @@
     # """
     # accesscontrolallowmethods = "GET, HEAD, POST"
     contentTypeNosniff = true
+    customFrameOptionsValue = "SAMEORIGIN"
     forceSTSHeader = true
-    frameDeny = true
     referrerPolicy = "same-origin"
     sslRedirect = true
     stsIncludeSubdomains = false
