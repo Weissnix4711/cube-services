@@ -4,7 +4,7 @@ After=podman-user-wait-remote-fs.service
 Description=Forgejo git server
 
 [Container]
-Image=codeberg.org/forgejo/forgejo:13-rootless
+Image=codeberg.org/forgejo/forgejo:14-rootless
 AutoUpdate=registry
 User=3000:3000
 UIDMap="+3000:@3000:1"
