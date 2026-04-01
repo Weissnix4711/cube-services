@@ -14,6 +14,7 @@ Secret=vaultwarden-client-secret,type=env,target=SSO_CLIENT_SECRET
 Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.vaultwarden.rule=Host(`vault.thomasaldrian.net`)"
+Label="traefik.http.services.vaultwarden.loadbalancer.server.port=8000"
 
 [Service]
 Restart=on-failure
