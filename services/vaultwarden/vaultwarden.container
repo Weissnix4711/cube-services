@@ -9,6 +9,8 @@ AutoUpdate=registry
 User=3000:3000
 UIDMap="+3000:@3000:1"
 Volume=/var/mnt/apps/data/vaultwarden:/data
+# ROCKET_PORT isn't read from .env
+Environment=ROCKET_PORT=8000
 Secret=vaultwarden-client-secret,type=env,target=SSO_CLIENT_SECRET
 # Reverse proxy
 Network=web.network
