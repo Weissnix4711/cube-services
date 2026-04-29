@@ -1,3 +1,8 @@
-FROM ghcr.io/lennart-k/rustical:latest
+FROM ghcr.io/lennart-k/rustical:0.11.16
 
 COPY config.toml /etc/rustical/config.toml
+
+LABEL   org.opencontainers.image.title="CubeServices rustical" \
+        org.opencontainers.image.desciption="CalDAV/CardDAV server" \
+        org.opencontainers.image.source="https://git.thomasaldrian.net/thomasj/cube-services" \
+        org.opencontainers.image.authors="Thomas Aldrian <aldrian.thom@proton.me>"

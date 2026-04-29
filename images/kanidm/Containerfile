@@ -1,4 +1,4 @@
-FROM docker.io/kanidm/server:latest
+FROM docker.io/kanidm/server:1.9.0
 
 # We have no shell, no utils. This must match host.
 ARG USER_GID=3000
@@ -11,6 +11,11 @@ ENV KANIDM_CONFIG=/server.toml
 COPY --chown=0:${USER_GID} --chmod=440 certs/chain.pem /chain.pem
 COPY --chown=0:${USER_GID} --chmod=440 certs/key.pem /key.pem
 
-# Test config 
+# Test config
 # This doesn't necessarily return a non-zero code on failure
 # RUN ["kanidmd", "configtest"]
+
+LABEL   org.opencontainers.image.title="CubeServices KanIDM server" \
+        org.opencontainers.image.desciption="Identity management server" \
+        org.opencontainers.image.source="https://git.thomasaldrian.net/thomasj/cube-services" \
+        org.opencontainers.image.authors="Thomas Aldrian <aldrian.thom@proton.me>"

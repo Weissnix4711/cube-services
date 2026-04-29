@@ -1,4 +1,9 @@
-FROM docker.io/inventree/inventree:stable
+FROM docker.io/inventree/inventree:1.1.11
 
 COPY config.yaml /home/inventree/config.yaml
 ENV INVENTREE_CONFIG_FILE=/home/inventree/config.yaml
+
+LABEL   org.opencontainers.image.title="CubeServices InvenTree server" \
+        org.opencontainers.image.desciption="InvenTree inventory management system" \
+        org.opencontainers.image.source="https://git.thomasaldrian.net/thomasj/cube-services" \
+        org.opencontainers.image.authors="Thomas Aldrian <aldrian.thom@proton.me>"
