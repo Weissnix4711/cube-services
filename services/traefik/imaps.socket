@@ -1,0 +1,7 @@
+[Socket]
+ListenStream=993
+FileDescriptorName=imaps
+Service=traefik.service
+
+[Install]
+WantedBy=sockets.target

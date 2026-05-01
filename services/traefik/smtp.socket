@@ -1,0 +1,7 @@
+[Socket]
+ListenStream=25
+FileDescriptorName=smtp
+Service=traefik.service
+
+[Install]
+WantedBy=sockets.target

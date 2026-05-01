@@ -14,8 +14,10 @@
     http.middlewares = ["sec-headers@file"]
     http.tls.certResolver = "le"
 
+  [entryPoints.imaps]
   [entryPoints.ldapsecure]
-
+  [entryPoints.smtp]
+  [entryPoints.smtps]
   [entryPoints.sshalt]
 
 

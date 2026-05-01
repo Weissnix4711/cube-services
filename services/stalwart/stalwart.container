@@ -1,0 +1,43 @@
+[Unit]
+Requires=podman-user-wait-remote-fs.service
+After=podman-user-wait-remote-fs.service
+Description=Stalwart Mail Server
+
+[Container]
+Image=docker.io/stalwartlabs/stalwart:v0.16
+AutoUpdate=registry
+UserNS=keep-id
+Volume=/var/mnt/apps/data/stalwart/etc:/etc/stalwart
+Volume=/var/mnt/apps/data/stalwart/data:/var/lib/stalwart
+Environment=STALWART_PUBLIC_URL=https://mail.thomasaldrian.net
+Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
+# Reverse proxy
+Network=web.network
+Label="traefik.enable=true"
+Label="traefik.http.routers.stalwart.rule=Host(`mail.thomasaldrian.net`)"
+Label="traefik.http.services.stalwart.loadbalancer.server.port=8080"
+# SMTP
+Label="traefik.tcp.routers.stalwart-smtp.rule=HostSNI(`*`)"
+Label="traefik.tcp.routers.stalwart-smtp.entrypoints=smtp"
+Label="traefik.tcp.services.stalwart-smtp.loadbalancer.server.port=25"
+Label="traefik.tcp.services.stalwart-smtp.loadbalancer.proxyProtocol.version=2"
+# SMTPS
+Label="traefik.tcp.routers.stalwart-smtps.rule=HostSNI(`*`)"
+Label="traefik.tcp.routers.stalwart-smtps.entrypoints=smtps"
+Label="traefik.tcp.routers.stalwart-smtps.tls.passthrough=true"
+Label="traefik.tcp.services.stalwart-smtps.loadbalancer.server.port=465"
+Label="traefik.tcp.services.stalwart-smtps.loadbalancer.proxyProtocol.version=2"
+# IMAPS
+Label="traefik.tcp.routers.stalwart-imaps.rule=HostSNI(`*`)"
+Label="traefik.tcp.routers.stalwart-imaps.entrypoints=imaps"
+Label="traefik.tcp.routers.stalwart-imaps.tls.passthrough=true"
+Label="traefik.tcp.services.stalwart-imaps.loadbalancer.server.port=993"
+Label="traefik.tcp.services.stalwart-imaps.loadbalancer.proxyProtocol.version=2"
+
+[Service]
+Restart=on-failure
+ExecStartPre=/usr/bin/mkdir -p /var/mnt/apps/data/stalwart/etc
+ExecStartPre=/usr/bin/mkdir -p /var/mnt/apps/data/stalwart/data
+
+[Install]
+WantedBy=default.target
