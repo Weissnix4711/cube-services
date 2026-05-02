@@ -19,18 +19,21 @@ Label="traefik.http.services.stalwart.loadbalancer.server.port=8080"
 # SMTP
 Label="traefik.tcp.routers.stalwart-smtp.rule=HostSNI(`*`)"
 Label="traefik.tcp.routers.stalwart-smtp.entrypoints=smtp"
+Label="traefik.tcp.routers.stalwart-smtp.service=stalwart-smtp"
 Label="traefik.tcp.services.stalwart-smtp.loadbalancer.server.port=25"
 Label="traefik.tcp.services.stalwart-smtp.loadbalancer.proxyProtocol.version=2"
 # SMTPS
 Label="traefik.tcp.routers.stalwart-smtps.rule=HostSNI(`*`)"
 Label="traefik.tcp.routers.stalwart-smtps.entrypoints=smtps"
 Label="traefik.tcp.routers.stalwart-smtps.tls.passthrough=true"
+Label="traefik.tcp.routers.stalwart-smtps.service=stalwart-smtps"
 Label="traefik.tcp.services.stalwart-smtps.loadbalancer.server.port=465"
 Label="traefik.tcp.services.stalwart-smtps.loadbalancer.proxyProtocol.version=2"
 # IMAPS
 Label="traefik.tcp.routers.stalwart-imaps.rule=HostSNI(`*`)"
 Label="traefik.tcp.routers.stalwart-imaps.entrypoints=imaps"
 Label="traefik.tcp.routers.stalwart-imaps.tls.passthrough=true"
+Label="traefik.tcp.routers.stalwart-imaps.service=stalwart-imaps"
 Label="traefik.tcp.services.stalwart-imaps.loadbalancer.server.port=993"
 Label="traefik.tcp.services.stalwart-imaps.loadbalancer.proxyProtocol.version=2"
 
