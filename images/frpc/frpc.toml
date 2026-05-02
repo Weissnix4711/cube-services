@@ -1,0 +1,46 @@
+serverAddr = "unesty-2.frankfurt.thomasaldrian.net"
+serverPort = 7000
+
+[auth]
+  method = "token"
+  token = "{{ .Envs.FRP_AUTH_TOKEN }}"
+
+[[proxies]]
+  localIP = "10.99.0.10"
+  localPort = 25
+  name = "smtp"
+  remotePort = 25
+  transport.proxyProtocolVersion = "v2"
+  type = "tcp"
+
+[[proxies]]
+  localIP = "10.99.0.10"
+  localPort = 80
+  name = "web"
+  remotePort = 80
+  transport.proxyProtocolVersion = "v2"
+  type = "tcp"
+
+[[proxies]]
+  localIP = "10.99.0.10"
+  localPort = 265
+  name = "smtps"
+  remotePort = 265
+  transport.proxyProtocolVersion = "v2"
+  type = "tcp"
+
+[[proxies]]
+  localIP = "10.99.0.10"
+  localPort = 443
+  name = "https"
+  remotePort = 443
+  transport.proxyProtocolVersion = "v2"
+  type = "tcp"
+
+[[proxies]]
+  localIP = "10.99.0.10"
+  localPort = 993
+  name = "imaps"
+  remotePort = 993
+  transport.proxyProtocolVersion = "v2"
+  type = "tcp"

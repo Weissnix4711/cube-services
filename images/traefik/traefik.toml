@@ -5,20 +5,28 @@
 [entryPoints]
 
   [entryPoints.web]
+    address = ":80"
     [entryPoints.web.http.redirections.entryPoint]
       scheme = "https"
       to = ":443"
 
   [entryPoints.websecure]
+    address = ":443"
     asDefault = true
     http.middlewares = ["sec-headers@file"]
     http.tls.certResolver = "le"
 
-  [entryPoints.imaps]
+  # Socket only
   [entryPoints.ldapsecure]
-  [entryPoints.smtp]
-  [entryPoints.smtps]
   [entryPoints.sshalt]
+
+  # FRP
+  [entryPoints.imaps]
+    address = "993"
+  [entryPoints.smtp]
+    address = ":25"
+  [entryPoints.smtps]
+    address = ":265"
 
 
 [providers.docker]

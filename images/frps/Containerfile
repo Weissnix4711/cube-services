@@ -1,0 +1,8 @@
+FROM docker.io/snowdreamtech/frps:0.68-alpine
+
+COPY --chmod=444 frps.toml /etc/frp/frps.toml
+
+LABEL   org.opencontainers.image.title="CubeServices FRPS" \
+        org.opencontainers.image.description="Fast reverse proxy server" \
+        org.opencontainers.image.source="https://git.thomasaldrian.net/thomasj/cube-services" \
+        org.opencontainers.image.authors="Thomas Aldrian <aldrian.thom@proton.me>"

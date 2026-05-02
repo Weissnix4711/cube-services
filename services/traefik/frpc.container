@@ -1,0 +1,15 @@
+[Unit]
+Description=FRPC reverse proxy client
+
+[Container]
+Image=ghcr.io/weissnix4711/frpc:latest
+AutoUpdate=registry
+Network=web.network
+IP=10.99.0.20
+Secret=frp-token,type=env,target=FRP_AUTH_TOKEN
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
