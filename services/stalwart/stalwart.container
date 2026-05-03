@@ -14,7 +14,7 @@ Secret=cloudflare-token,type=env,target=CF_DNS_API_TOKEN
 # Reverse proxy
 Network=web.network
 Label="traefik.enable=true"
-Label="traefik.http.routers.stalwart.rule=Host(`mail.thomasaldrian.net`)"
+Label="traefik.http.routers.stalwart.rule=Host(`mail.thomasaldrian.net`) || Host(`autodiscover.thomasaldrian.net`) || Host(`autoconfig.thomasaldrian.net`) || Host(`mta-sts.thomasaldrian.net`)"
 Label="traefik.http.services.stalwart.loadbalancer.server.port=8080"
 # SMTP
 Label="traefik.tcp.routers.stalwart-smtp.rule=HostSNI(`*`)"
