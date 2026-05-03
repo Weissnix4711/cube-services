@@ -13,7 +13,7 @@
   [entryPoints.websecure]
     address = ":443"
     asDefault = true
-    http.middlewares = ["sec-headers@file"]
+    http.middlewares = ["cf-real-ip@file", "sec-headers@file"]
     http.tls.certResolver = "le"
     proxyProtocol.trustedIPs = ["10.99.0.0/28"]
 
@@ -59,9 +59,15 @@
   insecureSkipVerify = true
 
 
-[experimental.plugins.traefik-oidc-auth]
-  moduleName = "github.com/sevensolutions/traefik-oidc-auth"
-  version = "v0.17.0"
+[experimental.plugins]
+  [experimental.plugins.traefik-oidc-auth]
+    moduleName = "github.com/sevensolutions/traefik-oidc-auth"
+    version = "v0.17.0"
+
+  # Yes this is unmaintained, but there's currently no better alternative
+  [experimental.plugins.cloudflarewarp]
+    moduleName = "github.com/BetterCorp/cloudflarewarp"
+    version = "v1.3.3"
 
 
 [providers.file]
