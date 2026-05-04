@@ -23,9 +23,9 @@ serverPort = 7000
 
 [[proxies]]
   localIP = "10.99.0.10"
-  localPort = 265
+  localPort = 465
   name = "smtps"
-  remotePort = 265
+  remotePort = 465
   transport.proxyProtocolVersion = "v2"
   type = "tcp"
 

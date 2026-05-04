@@ -29,7 +29,7 @@
     address = ":25"
     proxyProtocol.trustedIPs = ["10.99.0.0/28"]
   [entryPoints.smtps]
-    address = ":265"
+    address = ":465"
     proxyProtocol.trustedIPs = ["10.99.0.0/28"]
 
 
