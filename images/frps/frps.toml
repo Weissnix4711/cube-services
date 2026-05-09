@@ -1,3 +1,5 @@
+# Does not listen on ipv6 by default unless we use ::
+bindAddr = "::"
 bindPort = 7000
 
 [auth]
