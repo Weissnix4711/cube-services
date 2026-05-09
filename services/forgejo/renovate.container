@@ -10,6 +10,3 @@ Secret=renovate-token,type=env,target=RENOVATE_TOKEN
 
 [Service]
 Type=oneshot
-
-[Install]
-WantedBy=default.target
