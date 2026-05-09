@@ -11,7 +11,7 @@
     referrerPolicy = "same-origin"
     sslRedirect = true
     stsIncludeSubdomains = false
-    stsPreload = false
+    stsPreload = true
     stsSeconds = 31536000
     # [http.middlewares.sec-headers.headers.customResponseHeaders]
     #   X-Robots-Tag = "none,nofollow,noindex,noarchive,nosnippet,notranslate,noimageindex"

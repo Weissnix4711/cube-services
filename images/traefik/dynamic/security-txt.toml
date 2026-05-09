@@ -1,0 +1,5 @@
+[http.middlewares.wellknown-security-txt.plugin.security-txt]
+  contact = ["mailto://admin@thomasaldrian.net", "mailto://aldrian.thom@proton.me"]
+  encryption = "https://keyserver.ubuntu.com/pks/lookup?search=0x8796160143b03a8d6f9561cb6e25af572b56794b&op=get"
+  expires = "2026-11-01T00:00:00.000Z"
+  preferredLanguages = "en, de"
