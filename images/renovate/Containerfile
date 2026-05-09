@@ -3,3 +3,8 @@ FROM ghcr.io/renovatebot/renovate:43
 COPY config.yml /config.yml
 
 ENV RENOVATE_CONFIG_FILE=/config.yml
+
+LABEL   org.opencontainers.image.title="CubeServices Renovate Bot" \
+        org.opencontainers.image.description="Renovate dependency update bot" \
+        org.opencontainers.image.source="https://git.thomasaldrian.net/thomasj/cube-services" \
+        org.opencontainers.image.authors="Thomas Aldrian <aldrian.thom@proton.me>"
