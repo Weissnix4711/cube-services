@@ -1,0 +1,3 @@
+platform: forgejo
+endpoint: https://git.thomasaldrian.net
+autodiscover: true

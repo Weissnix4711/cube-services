@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Renovate bot
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+Unit=renovate.service
+
+[Install]
+WantedBy=timers.target
