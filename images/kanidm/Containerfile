@@ -1,4 +1,4 @@
-FROM docker.io/kanidm/server:1.10.0
+FROM docker.io/kanidm/server:1.10.1
 
 # We have no shell, no utils. This must match host.
 ARG USER_GID=3000
