@@ -1,0 +1,8 @@
+FROM ghcr.io/dani-garcia/vaultwarden:1.36.0-alpine
+
+COPY vaultwarden.env /.env
+
+LABEL   org.opencontainers.image.title="CubeServices Vaultwarden" \
+        org.opencontainers.image.description="Unofficial bitwarden compatible server" \
+        org.opencontainers.image.source="https://git.thomasaldrian.net/thomasj/cube-services" \
+        org.opencontainers.image.authors="Thomas Aldrian <aldrian.thom@proton.me>"
