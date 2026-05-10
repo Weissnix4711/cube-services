@@ -4,6 +4,7 @@ Description=Run Renovate bot
 [Timer]
 OnCalendar=hourly
 Persistent=true
+RandomizedDelaySec=300
 Unit=renovate.service
 
 [Install]
