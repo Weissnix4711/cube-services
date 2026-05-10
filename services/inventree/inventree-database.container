@@ -4,7 +4,7 @@ After=podman-user-wait-remote-fs.service
 Description=InvenTree database
 
 [Container]
-Image=docker.io/library/postgres:17
+Image=docker.io/library/postgres:18
 Pod=inventree.pod
 User=3000
 Group=3000
