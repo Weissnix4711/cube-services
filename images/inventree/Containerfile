@@ -1,4 +1,4 @@
-FROM docker.io/inventree/inventree:1.1.11
+FROM docker.io/inventree/inventree:1.3.2
 
 COPY config.yaml /home/inventree/config.yaml
 ENV INVENTREE_CONFIG_FILE=/home/inventree/config.yaml
