@@ -40,6 +40,7 @@
 [certificatesResolvers.le.acme]
   dnsChallenge.provider = "cloudflare"
   email = "aldrian.thom+letsencrypt@proton.me"
+  keyType = "EC256"
   storage = "/letsencrypt/acme.json"
 
 
