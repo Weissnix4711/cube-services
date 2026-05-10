@@ -7,6 +7,7 @@ Description=Renovate dependency update bot
 Image=ghcr.io/weissnix4711/renovate:latest
 AutoUpdate=registry
 Secret=renovate-token,type=env,target=RENOVATE_TOKEN
+Secret=renovate-github-com-token,type=env,target=RENOVATE_GITHUB_COM_TOKEN
 
 [Service]
 Type=oneshot
