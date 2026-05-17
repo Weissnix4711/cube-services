@@ -1,4 +1,4 @@
-FROM ghcr.io/lennart-k/rustical:0.12.13
+FROM ghcr.io/lennart-k/rustical:0.12.14
 
 COPY config.toml /etc/rustical/config.toml
 
