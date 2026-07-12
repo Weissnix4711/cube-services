@@ -23,6 +23,7 @@ Volume=/var/mnt/apps/certs:/letsencrypt:z
 Notify=healthy
 HealthCmd=traefik healthcheck
 HealthInterval=2m
+HealthStartupInterval=30s
 # TODO email in secrets
 # Cloudflare API used for le DNS challenge
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL
