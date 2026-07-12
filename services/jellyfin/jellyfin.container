@@ -16,6 +16,7 @@ Volume=/var/mnt/media/movies:/media:ro
 Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.jellyfin.rule=Host(`media.thomasaldrian.net`)"
+Label="traefik.http.routers.jellyfin.middlewares=secured@file"
 Label="traefik.http.services.jellyfin.loadbalancer.server.port=8096"
 
 [Service]

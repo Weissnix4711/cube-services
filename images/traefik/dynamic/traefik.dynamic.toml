@@ -3,12 +3,12 @@
   [http.routers]
 
     [http.routers.dashboard]
-      middlewares = ["dashboard-auth", "internal"]    # script-src unsafe-inline
+      middlewares = ["dashboard-auth", "secured"]
       rule = "Host(`traefik.cube.thomasaldrian.net`)"
       service = "api@internal"
 
     [http.routers.truenas]
-      middlewares = ["internal"]             # style-src unsafe-inline
+      middlewares = ["internal"]
       rule = "Host(`nas.thomasaldrian.net`)"
       service = "truenas"
 
@@ -23,7 +23,7 @@
       service = "cthost"
 
     [http.routers.homeassistant]
-      middlewares = ["internal"]              # requires style-src unsafe-inline
+      middlewares = ["secured"]
       rule = "Host(`home.thomasaldrian.net`)"
       service = "homeassistant"
 
@@ -45,7 +45,7 @@
 
     # For most public services, can tighten down CSP.
     [http.middlewares.secured.chain]
-      middlewares = ["csp-strict"]
+      middlewares = ["csp-default"]
 
     # For services like PVE, cockpit, which need more relaxed security settings.
     [http.middlewares.internal.chain]

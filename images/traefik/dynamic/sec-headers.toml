@@ -18,22 +18,24 @@
   contentSecurityPolicy = """
       default-src 'self'; \
       base-uri 'self'; \
+      frame-src 'self'; \
       script-src 'self' 'unsafe-inline' 'unsafe-eval'; \
       style-src 'self' 'unsafe-inline'; \
       font-src 'self' data:; \
-      img-src 'self' data:; \
+      img-src 'self' https://*.thomasaldrian.net data:; \
       frame-ancestors 'self'; \
       form-action 'self'; \
     """
 
 # Strict CSP should be preferred
-[http.middlewares.csp-strict.headers]
+[http.middlewares.csp-default.headers]
   contentSecurityPolicy = """
       default-src 'self'; \
       base-uri 'self'; \
       frame-src 'self'; \
-      script-src 'self'; \
-      style-src 'self'; \
+      script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; \
+      style-src 'self' 'unsafe-inline'; \
+      img-src 'self' https://*.thomasaldrian.net data:; \
       frame-ancestors 'self'; \
       form-action 'self'; \
     """
