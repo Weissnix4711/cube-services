@@ -4,7 +4,7 @@ After=podman-user-wait-remote-fs.service
 Description=Immich database
 
 [Container]
-Image=ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+Image=ghcr.io/immich-app/postgres:16-vectorchord0.5.3
 AutoUpdate=registry
 Pod=immich.pod
 User=3000
