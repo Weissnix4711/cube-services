@@ -19,6 +19,10 @@ Notify=true
 SecurityLabelType=container_runtime_t
 Volume=%t/podman/podman.sock:/var/run/docker.sock
 Volume=/var/mnt/apps/certs:/letsencrypt:z
+# Healthcheck
+Notify=healthy
+HealthCmd=traefik healthcheck
+HealthInterval=2m
 # TODO email in secrets
 # Cloudflare API used for le DNS challenge
 Secret=cloudflare-email,type=env,target=CF_API_EMAIL

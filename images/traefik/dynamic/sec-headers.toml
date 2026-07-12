@@ -25,9 +25,10 @@
       img-src 'self' https://*.thomasaldrian.net data:; \
       frame-ancestors 'self'; \
       form-action 'self'; \
+      object-src 'none'; \
     """
 
-# Strict CSP should be preferred
+# Strict(er) CSP should be preferred
 [http.middlewares.csp-default.headers]
   contentSecurityPolicy = """
       default-src 'self'; \
@@ -38,4 +39,5 @@
       img-src 'self' https://*.thomasaldrian.net data:; \
       frame-ancestors 'self'; \
       form-action 'self'; \
+      object-src 'none'; \
     """

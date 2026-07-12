@@ -5,19 +5,35 @@
 [entryPoints]
 
   [entryPoints.web]
-    address = ":80"
     [entryPoints.web.http.redirections.entryPoint]
       scheme = "https"
       to = ":443"
 
+  [entryPoints.web-frp]
+    address = ":80"
+    proxyProtocol.trustedIPs = ["10.99.0.0/28"]
+    [entryPoints.web-frp.http.redirections.entryPoint]
+      scheme = "https"
+      to = ":443"
+
   [entryPoints.websecure]
+    asDefault = true
+    http.middlewares = ["cf-real-ip@file", "sec-headers-all@file", "wellknown-security-txt@file"]
+    http.tls.certResolver = "le"
+
+    [entryPoints.websecure.transport.respondingTimeouts]
+      idleTimeout = "600s"
+      readTimeout = "600s"
+      writeTimeout = "600s"
+
+  [entryPoints.websecure-frp]
     address = ":443"
     asDefault = true
     http.middlewares = ["cf-real-ip@file", "sec-headers-all@file", "wellknown-security-txt@file"]
     http.tls.certResolver = "le"
     proxyProtocol.trustedIPs = ["10.99.0.0/28"]
 
-  # Socket only
+  # Socket only, no address configured
   [entryPoints.ldapsecure]
   [entryPoints.sshalt]
 
@@ -69,6 +85,10 @@
   [experimental.plugins.cloudflarewarp]
     moduleName = "github.com/BetterCorp/cloudflarewarp"
     version = "v1.3.3"
+
+  [experimental.plugins.security-txt]
+    moduleName = "github.com/Ju0x/traefik-security-txt"
+    version = "v0.1.0"
 
 
 [providers.file]
