@@ -2,7 +2,7 @@
 Description=InvenTree cache
 
 [Container]
-Image=docker.io/valkey/valkey:8.1-alpine
+Image=docker.io/valkey/valkey:9.1-alpine
 AutoUpdate=registry
 Pod=inventree.pod
 # Healthcheck
