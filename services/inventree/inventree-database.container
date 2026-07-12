@@ -8,10 +8,15 @@ Image=docker.io/library/postgres:18
 Pod=inventree.pod
 User=3000
 Group=3000
-Volume=/var/mnt/apps/data/inventree/db:/var/lib/postgresql/data
+Volume=/var/mnt/apps/data/inventree/db:/var/lib/postgresql/
 Environment=POSTGRES_USER=pguser
 Environment=POSTGRES_DB=inventree
 Secret=inventree-db-password,type=env,target=POSTGRES_PASSWORD
+# Healthcheck
+Notify=healthy
+HealthCmd=pg_isready -U pguser
+HealthInterval=2m
+HealthStartupInterval=30s
 
 [Service]
 Restart=on-failure
