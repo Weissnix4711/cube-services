@@ -2,7 +2,8 @@
 Description=InvenTree cache
 
 [Container]
-Image=docker.io/library/redis:7-alpine
+Image=docker.io/valkey/valkey:8.1-alpine
+AutoUpdate=registry
 Pod=inventree.pod
 # Healthcheck
 HealthCmd="redis-cli ping || exit 1"
