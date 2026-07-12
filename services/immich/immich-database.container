@@ -4,12 +4,12 @@ After=podman-user-wait-remote-fs.service
 Description=Immich database
 
 [Container]
-Image=ghcr.io/immich-app/postgres:16-vectorchord0.5.3
+Image=ghcr.io/immich-app/postgres:18-vectorchord0.5.3
 AutoUpdate=registry
 Pod=immich.pod
 User=3000
 Group=3000
-Volume=/var/mnt/apps/data/immich/db:/var/lib/postgresql/data
+Volume=/var/mnt/apps/data/immich/db:/var/lib/postgresql/
 ShmSize=128mb
 # Environment
 Environment=POSTGRES_USER=postgres
