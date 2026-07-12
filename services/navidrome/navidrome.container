@@ -15,6 +15,7 @@ Environment=ND_EXTAUTH_TRUSTEDSOURCES=10.99.0.0/28
 Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.navidrome.rule=Host(`music.thomasaldrian.net`)"
+Label="traefik.http.routers.navidrome.middlewares=secured@file"
 # OIDC
 Label="traefik.http.routers.navidrome.middlewares=navidrome-auth@file"
 

@@ -13,7 +13,7 @@
   [entryPoints.websecure]
     address = ":443"
     asDefault = true
-    http.middlewares = ["cf-real-ip@file", "sec-headers@file", "wellknown-security-txt@file"]
+    http.middlewares = ["cf-real-ip@file", "sec-headers-all@file", "wellknown-security-txt@file"]
     http.tls.certResolver = "le"
     proxyProtocol.trustedIPs = ["10.99.0.0/28"]
 

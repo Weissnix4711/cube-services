@@ -3,6 +3,7 @@ Image=docker.io/traefik/whoami
 Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.whoami.rule=Host(`whoami.thomasaldrian.net`)"
+Label="traefik.http.routers.whoami.middlewares=secured@file"
 
 [Service]
 Restart=on-failure

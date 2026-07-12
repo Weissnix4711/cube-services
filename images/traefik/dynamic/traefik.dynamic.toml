@@ -3,23 +3,27 @@
   [http.routers]
 
     [http.routers.dashboard]
-      middlewares = ["dashboard-auth"]
+      middlewares = ["dashboard-auth", "internal"]    # script-src unsafe-inline
       rule = "Host(`traefik.cube.thomasaldrian.net`)"
       service = "api@internal"
 
     [http.routers.truenas]
+      middlewares = ["internal"]             # style-src unsafe-inline
       rule = "Host(`nas.thomasaldrian.net`)"
       service = "truenas"
 
     [http.routers.pve]
+      middlewares = ["internal"]
       rule = "Host(`pve.cube.thomasaldrian.net`)"
       service = "pve"
 
     [http.routers.cthost]
+      middlewares = ["internal"]
       rule = "Host(`cthost.cube.thomasaldrian.net`)"
       service = "cthost"
 
     [http.routers.homeassistant]
+      middlewares = ["internal"]              # requires style-src unsafe-inline
       rule = "Host(`home.thomasaldrian.net`)"
       service = "homeassistant"
 
@@ -36,6 +40,16 @@
 
     [http.services.homeassistant]
       loadBalancer.servers = [{ url = "http://homeassistant.cube.thomasaldrian.net:8123" }]
+
+  [http.middlewares]
+
+    # For most public services, can tighten down CSP.
+    [http.middlewares.secured.chain]
+      middlewares = ["csp-strict"]
+
+    # For services like PVE, cockpit, which need more relaxed security settings.
+    [http.middlewares.internal.chain]
+      middlewares = ["csp-relaxed"]
 
 
 # Serve 404 and ldaps with le certs

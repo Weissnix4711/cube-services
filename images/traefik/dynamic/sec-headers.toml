@@ -1,17 +1,39 @@
-[http.middlewares.sec-headers]
-  [http.middlewares.sec-headers.headers]
-    browserXssFilter = true
-    # contentSecurityPolicy = """
-    #   default-src 'self'; \
-    # """
-    # accesscontrolallowmethods = "GET, HEAD, POST"
-    contentTypeNosniff = true
-    customFrameOptionsValue = "SAMEORIGIN"
-    forceSTSHeader = true
-    referrerPolicy = "same-origin"
-    sslRedirect = true
-    stsIncludeSubdomains = false
-    stsPreload = true
-    stsSeconds = 31536000
-    # [http.middlewares.sec-headers.headers.customResponseHeaders]
-    #   X-Robots-Tag = "none,nofollow,noindex,noarchive,nosnippet,notranslate,noimageindex"
+# Headers common to all
+[http.middlewares.sec-headers-all.headers]
+  browserXssFilter = true
+  # accesscontrolallowmethods = "GET, HEAD, POST"
+  contentTypeNosniff = true
+  customFrameOptionsValue = "SAMEORIGIN"
+  forceSTSHeader = true
+  referrerPolicy = "same-origin"
+  sslRedirect = true
+  stsIncludeSubdomains = false
+  stsPreload = true
+  stsSeconds = 31536000
+  # [http.middlewares.sec-headers.headers.customResponseHeaders]
+  #   X-Robots-Tag = "none,nofollow,noindex,noarchive,nosnippet,notranslate,noimageindex"
+
+# Relaxed CSP for services which need it
+[http.middlewares.csp-relaxed.headers]
+  contentSecurityPolicy = """
+      default-src 'self'; \
+      base-uri 'self'; \
+      script-src 'self' 'unsafe-inline' 'unsafe-eval'; \
+      style-src 'self' 'unsafe-inline'; \
+      font-src 'self' data:; \
+      img-src 'self' data:; \
+      frame-ancestors 'self'; \
+      form-action 'self'; \
+    """
+
+# Strict CSP should be preferred
+[http.middlewares.csp-strict.headers]
+  contentSecurityPolicy = """
+      default-src 'self'; \
+      base-uri 'self'; \
+      frame-src 'self'; \
+      script-src 'self'; \
+      style-src 'self'; \
+      frame-ancestors 'self'; \
+      form-action 'self'; \
+    """

@@ -15,6 +15,7 @@ Network=web.network
 Label="traefik.enable=true"
 # Web UI
 Label="traefik.http.routers.kanidm.rule=Host(`idm.thomasaldrian.net`)"
+Label="traefik.http.routers.kanidm.middlewares=secured@file"
 Label="traefik.http.services.kanidm.loadbalancer.server.port=8443"
 Label="traefik.http.services.kanidm.loadbalancer.server.scheme=https"
 # LDAPS
