@@ -9,7 +9,7 @@ Requires=podman-user-wait-remote-fs.service
 After=podman-user-wait-remote-fs.service
 
 [Container]
-Image=ghcr.io/immich-app/immich-server:v3.0.2
+Image=ghcr.io/immich-app/immich-server:v3.0.3
 AutoUpdate=registry
 Pod=immich.pod
 User=3000
