@@ -6,6 +6,7 @@ Description=Renovate dependency update bot
 [Container]
 Image=ghcr.io/weissnix4711/renovate:latest
 AutoUpdate=registry
+Volume=renovate-cache.volume:/tmp/renovate/cache
 Secret=renovate-token,type=env,target=RENOVATE_TOKEN
 Secret=renovate-github-com-token,type=env,target=RENOVATE_GITHUB_COM_TOKEN
 

@@ -1,3 +1,5 @@
 platform: forgejo
 endpoint: https://git.thomasaldrian.net
 autodiscover: true
+# This is the default, but we are explicit
+cacheDir: /tmp/renovate/cache
