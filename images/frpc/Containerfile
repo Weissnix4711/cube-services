@@ -1,4 +1,4 @@
-FROM docker.io/snowdreamtech/frpc:0.68-alpine
+FROM docker.io/snowdreamtech/frpc:0.69-alpine
 
 COPY --chmod=444 frpc.toml /etc/frp/frpc.toml
 

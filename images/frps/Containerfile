@@ -1,4 +1,4 @@
-FROM docker.io/snowdreamtech/frps:0.68-alpine
+FROM docker.io/snowdreamtech/frps:0.69-alpine
 
 COPY --chmod=444 frps.toml /etc/frp/frps.toml
 
