@@ -64,6 +64,9 @@
   disableDashboardAd = true
 
 
+[ping]
+
+
 [ocsp]
 
 
