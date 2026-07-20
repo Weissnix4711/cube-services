@@ -7,7 +7,7 @@
   forceSTSHeader = true
   referrerPolicy = "same-origin"
   sslRedirect = true
-  stsIncludeSubdomains = false
+  stsIncludeSubdomains = true
   stsPreload = true
   stsSeconds = 31536000
   # [http.middlewares.sec-headers.headers.customResponseHeaders]
@@ -18,14 +18,16 @@
   contentSecurityPolicy = """
       default-src 'self'; \
       base-uri 'self'; \
+      connect-src 'self' wss: https:; \
       frame-src 'self'; \
       script-src 'self' 'unsafe-inline' 'unsafe-eval'; \
       style-src 'self' 'unsafe-inline'; \
       font-src 'self' data:; \
-      img-src 'self' https://*.thomasaldrian.net data:; \
+      img-src 'self' data: https: blob:; \
       frame-ancestors 'self'; \
       form-action 'self'; \
       object-src 'none'; \
+      upgrade-insecure-requests; \
     """
 
 # Strict(er) CSP should be preferred
@@ -33,11 +35,14 @@
   contentSecurityPolicy = """
       default-src 'self'; \
       base-uri 'self'; \
+      connect-src 'self'; \
       frame-src 'self'; \
       script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; \
       style-src 'self' 'unsafe-inline'; \
+      font-src 'self' data:; \
       img-src 'self' https://*.thomasaldrian.net data:; \
       frame-ancestors 'self'; \
       form-action 'self'; \
       object-src 'none'; \
+      upgrade-insecure-requests; \
     """

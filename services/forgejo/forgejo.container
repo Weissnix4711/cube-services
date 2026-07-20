@@ -13,7 +13,7 @@ Volume=/var/mnt/apps/data/forgejo:/var/lib/gitea
 Network=web.network
 Label="traefik.enable=true"
 Label="traefik.http.routers.forgejo.rule=Host(`git.thomasaldrian.net`)"
-Label="traefik.http.routers.forgejo.middlewares=secured@file"
+Label="traefik.http.routers.forgejo.middlewares=relaxed@file"
 Label="traefik.http.services.forgejo.loadbalancer.server.port=3000"
 # SSH
 Label="traefik.tcp.routers.forgejo-ssh.rule=HostSNI(`*`)"

@@ -8,17 +8,17 @@
       service = "api@internal"
 
     [http.routers.truenas]
-      middlewares = ["internal"]
+      middlewares = ["relaxed"]
       rule = "Host(`nas.thomasaldrian.net`)"
       service = "truenas"
 
     [http.routers.pve]
-      middlewares = ["internal"]
+      middlewares = ["relaxed"]
       rule = "Host(`pve.cube.thomasaldrian.net`)"
       service = "pve"
 
     [http.routers.cthost]
-      middlewares = ["internal"]
+      middlewares = ["relaxed"]
       rule = "Host(`cthost.cube.thomasaldrian.net`)"
       service = "cthost"
 
@@ -48,7 +48,7 @@
       middlewares = ["csp-default"]
 
     # For services like PVE, cockpit, which need more relaxed security settings.
-    [http.middlewares.internal.chain]
+    [http.middlewares.relaxed.chain]
       middlewares = ["csp-relaxed"]
 
 
