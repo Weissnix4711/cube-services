@@ -23,7 +23,7 @@
       service = "cthost"
 
     [http.routers.homeassistant]
-      middlewares = ["secured"]
+      middlewares = ["relaxed"]
       rule = "Host(`home.thomasaldrian.net`)"
       service = "homeassistant"
 
