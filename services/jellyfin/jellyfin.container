@@ -5,7 +5,7 @@ After=podman-user-wait-remote-fs.service
 Description=Jellyfin media server
 
 [Container]
-Image=docker.io/jellyfin/jellyfin:10
+Image=docker.io/jellyfin/jellyfin:12
 AutoUpdate=registry
 UserNS=keep-id
 # Volumes
