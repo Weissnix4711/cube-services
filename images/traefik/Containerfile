@@ -1,4 +1,5 @@
-FROM docker.io/library/traefik:v3.7.13
+ARG UPSTREAM_VERSION=v3.7.13
+FROM docker.io/library/traefik:${UPSTREAM_VERSION}
 
 RUN mkdir -p /etc/traefik/dynamic
 COPY traefik.toml /etc/traefik

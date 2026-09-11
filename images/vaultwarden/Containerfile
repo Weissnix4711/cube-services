@@ -1,4 +1,5 @@
-FROM ghcr.io/dani-garcia/vaultwarden:1.37.2-alpine
+ARG UPSTREAM_VERSION=1.37.2-alpine
+FROM ghcr.io/dani-garcia/vaultwarden:${UPSTREAM_VERSION}
 
 COPY vaultwarden.env /.env
 

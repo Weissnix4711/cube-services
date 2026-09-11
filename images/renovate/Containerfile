@@ -1,4 +1,5 @@
-FROM ghcr.io/renovatebot/renovate:44
+ARG UPSTREAM_VERSION=44
+FROM ghcr.io/renovatebot/renovate:${UPSTREAM_VERSION}
 
 COPY config.yml /config.yml
 

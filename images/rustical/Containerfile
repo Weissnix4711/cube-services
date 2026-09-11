@@ -1,4 +1,5 @@
-FROM ghcr.io/lennart-k/rustical:0.16.2
+ARG UPSTREAM_VERSION=0.16.2
+FROM ghcr.io/lennart-k/rustical:${UPSTREAM_VERSION}
 
 COPY config.toml /etc/rustical/config.toml
 

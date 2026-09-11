@@ -1,4 +1,5 @@
-FROM docker.io/snowdreamtech/frpc:0.69-alpine
+ARG UPSTREAM_VERSION=0.69-alpine
+FROM docker.io/snowdreamtech/frpc:${UPSTREAM_VERSION}
 
 COPY --chmod=444 frpc.toml /etc/frp/frpc.toml
 
