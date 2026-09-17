@@ -2,7 +2,7 @@
 Description=Immich cache
 
 [Container]
-Image=docker.io/valkey/valkey:9.1
+Image=docker.io/valkey/valkey:9.2
 AutoUpdate=registry
 Pod=immich.pod
 # Healthcheck
