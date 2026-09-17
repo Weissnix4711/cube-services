@@ -1,4 +1,4 @@
-ARG UPSTREAM_VERSION=1.4.1
+ARG UPSTREAM_VERSION=1.5.5
 FROM docker.io/inventree/inventree:${UPSTREAM_VERSION}
 
 COPY config.yaml /home/inventree/config.yaml
