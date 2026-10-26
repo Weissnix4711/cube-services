@@ -4,7 +4,7 @@ After=podman-user-wait-remote-fs.service
 Description=Stalwart Mail Server
 
 [Container]
-Image=docker.io/stalwartlabs/stalwart:v0.16
+Image=docker.io/stalwartlabs/stalwart:v1.0
 AutoUpdate=registry
 UserNS=keep-id
 Volume=/var/mnt/apps/data/stalwart/etc:/etc/stalwart
