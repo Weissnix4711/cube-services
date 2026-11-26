@@ -1,4 +1,4 @@
-ARG UPSTREAM_VERSION=1.12.1
+ARG UPSTREAM_VERSION=1.12.2
 FROM docker.io/kanidm/server:${UPSTREAM_VERSION}
 
 # We have no shell, no utils. This must match host.
